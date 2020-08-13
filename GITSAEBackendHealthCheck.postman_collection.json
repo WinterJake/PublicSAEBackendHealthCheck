@@ -1,0 +1,491 @@
+{
+	"info": {
+		"_postman_id": "6270406f-ac63-4a2b-8b8e-b0f968cc08f6",
+		"name": "SAE Backend Health Check",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SupportAssist FUS-FRS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2a1b8bb3-e85d-4b74-837e-66be60637ee8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var responseCode = responseCode.code;\r",
+							"\r",
+							"if(responseCode == 200){\r",
+							"    postman.setEnvironmentVariable('FusFRS', \"Pass\");\r",
+							"    tests[\"FUS-FRS Result = \" + environment.FusFRS] = true;\r",
+							"}\r",
+							"else{\r",
+							"    postman.setEnvironmentVariable('FusFRS', \"Fail\");\r",
+							"    tests[\"FUS-FRS Result = \" + environment.FusFRS] = false;\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Token",
+						"value": "ed55d98c-12ee-4c33-bbf4-0280f5e0e8c1"
+					},
+					{
+						"key": "ApplicationId",
+						"value": "59214E2C-A322-E411-98B3-005056AB75ED"
+					}
+				],
+				"url": {
+					"raw": "https://mbapi.us.dell.com/FRS/api/v1/File/7585B17C395439C5E0534ACAA00AF8EF",
+					"protocol": "https",
+					"host": [
+						"mbapi",
+						"us",
+						"dell",
+						"com"
+					],
+					"path": [
+						"FRS",
+						"api",
+						"v1",
+						"File",
+						"7585B17C395439C5E0534ACAA00AF8EF"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SupportAssist FUS-FRS ExtrenalFileStatus",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24b868ab-ceb4-42e5-b1c3-ef28fdbd2b8d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var responseCode = responseCode.code;\r",
+							"\r",
+							"if(responseCode == 200){\r",
+							"    postman.setEnvironmentVariable('FRSExternalFileStatus', \"Pass\");\r",
+							"    tests[\"FRS-ExternalFileStatus Result = \" + environment.FRSExternalFileStatus] = true;\r",
+							"}\r",
+							"else{\r",
+							"    postman.setEnvironmentVariable('FRSExternalFileStatus', \"Fail\");\r",
+							"    tests[\"FRS-ExternalFileStatus Result = \" + environment.FRSExternalFileStatus] = false;\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Token",
+						"value": "ed55d98c-12ee-4c33-bbf4-0280f5e0e8c1"
+					},
+					{
+						"key": "ApplicationId",
+						"value": "59214E2C-A322-E411-98B3-005056AB75ED"
+					}
+				],
+				"url": {
+					"raw": "https://mbapi.us.dell.com/FRS/api/v1/File/7774dd16-21/fileStatus",
+					"protocol": "https",
+					"host": [
+						"mbapi",
+						"us",
+						"dell",
+						"com"
+					],
+					"path": [
+						"FRS",
+						"api",
+						"v1",
+						"File",
+						"7774dd16-21",
+						"fileStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SupportAssist Server WebCase",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a114ed7e-3142-45eb-9ef5-708df59079ca",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var responseCode = responseCode.code;\r",
+							"\r",
+							"if(responseCode == 200){\r",
+							"    postman.setEnvironmentVariable('WebCase', \"Pass\");\r",
+							"    tests[\"WebCase Result = \" + environment.WebCase] = true;\r",
+							"}\r",
+							"else{\r",
+							"    postman.setEnvironmentVariable('WebCase', \"Fail\");\r",
+							"    tests[\"WebCase Result = \" + environment.WebCase] = false;\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://ph.services.dell.com/Server/\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <ser:WarrantyInfoRequest>\r\n         <SourceHeader>\r\n            <ClientId>OME</ClientId>\r\n            <ClientType>OME</ClientType>\r\n            <ClientHostName>10.10.10.10</ClientHostName>\r\n            <ClientIPAddress>10.10.10.10</ClientIPAddress>\r\n        </SourceHeader>\r\n         <WarrantyRequestData>\r\n              <ServiceTag>CEHY104</ServiceTag>\r\n         </WarrantyRequestData>\r\n      </ser:WarrantyInfoRequest>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "https://mbapi.us.dell.com/webcase/WebCase/1_0",
+					"protocol": "https",
+					"host": [
+						"mbapi",
+						"us",
+						"dell",
+						"com"
+					],
+					"path": [
+						"webcase",
+						"WebCase",
+						"1_0"
+					]
+				},
+				"description": "SupportAssist Server WebCase"
+			},
+			"response": []
+		},
+		{
+			"name": "SupportAssist Server Microservices - CaseQuery",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "55d1f0f3-c93a-4fad-8bc9-2aa6657716af",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var responseCode = responseCode.code;\r",
+							"\r",
+							"if(responseCode == 200){\r",
+							"    postman.setEnvironmentVariable('CaseQuery', \"Pass\");\r",
+							"    tests[\"CaseQuery Result = \" + environment.CaseQuery] = true;\r",
+							"}\r",
+							"else{\r",
+							"    postman.setEnvironmentVariable('CaseQuery', \"Fail\");\r",
+							"    tests[\"CaseQuery Result = \" + environment.CaseQuery] = false;\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "SupportAssist-API-Key",
+						"value": "69C61EF9E6604E09AEC89F3976782264"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://mbapi.us.dell.com/serviceManagementServices/api/v1/cases?clientId=47trs5zysa25ahfslp3c0s5ld7dbqlzn",
+					"protocol": "https",
+					"host": [
+						"mbapi",
+						"us",
+						"dell",
+						"com"
+					],
+					"path": [
+						"serviceManagementServices",
+						"api",
+						"v1",
+						"cases"
+					],
+					"query": [
+						{
+							"key": "clientId",
+							"value": "47trs5zysa25ahfslp3c0s5ld7dbqlzn"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SupportAssist Server Microservices - Warranty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3105d282-a9e5-402c-bdc1-daaf5f153255",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var responseCode = responseCode.code;\r",
+							"\r",
+							"if(responseCode == 200){\r",
+							"    postman.setEnvironmentVariable('Warranty', \"Pass\");\r",
+							"    tests[\"Warranty Services Result = \" + environment.Warranty] = true;\r",
+							"}\r",
+							"else{\r",
+							"    postman.setEnvironmentVariable('Warranty', \"Fail\");\r",
+							"    tests[\"Warranty Services Result = \" + environment.Warranty] = false;\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "SupportAssist-API-Key",
+						"value": "69C61EF9E6604E09AEC89F3976782264"
+					}
+				],
+				"url": {
+					"raw": "https://mbapi.us.dell.com/warrantyServices/api/v2/warranties?serviceTag=56NDF22",
+					"protocol": "https",
+					"host": [
+						"mbapi",
+						"us",
+						"dell",
+						"com"
+					],
+					"path": [
+						"warrantyServices",
+						"api",
+						"v2",
+						"warranties"
+					],
+					"query": [
+						{
+							"key": "serviceTag",
+							"value": "56NDF22"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SupportAssist Server Microservices - Client",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "da6bae3e-d443-4257-9088-8806446e4de0",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"var status = responseCode.code;\r",
+							"\r",
+							"if (status == \"400\") {\r",
+							"\r",
+							"     tests[\"message = \" + jsonData.message] = true;\r",
+							"   \r",
+							"    postman.setEnvironmentVariable('SAEClients', \"Pass\");\r",
+							"    tests[\"SAE Registration Result = \" + environment.SAEClients] = true;\r",
+							"\r",
+							"}\r",
+							"\r",
+							"\r",
+							"else {\r",
+							"     postman.setEnvironmentVariable('SAEClients', \"Fail\");\r",
+							"    tests[\"SAE Registration Result = \" + environment.SAEClients] = false;\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "SupportAssist-API-Key",
+						"value": "69C61EF9E6604E09AEC89F3976782264"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n               \"id\": null,\r\n               \"type\": \"SAEVE\",\r\n               \"subClientType\": \"\",\r\n               \"hostname\": \"SAServer.DIT.Testing\",\r\n               \"ipaddress\": \"10.10.10.10\",\r\n               \"version\": \"1.0.0\",\r\n               \"companyName\": \"DELLEMCa\",\r\n               \"countryCodeISO\": \"840\",\r\n               \"emailOptIn\": true,\r\n               \"reportingOptIn\": true,\r\n               \"registrationStatus\": \"ACTIVE\",\r\n               \"managementStation\": \"125PTF1\",\r\n               \"managementStationOSName\": \"WIndows\",\r\n               \"managementStationVersion\": \"2012\",\r\n               \"piiMaskingEnabled\": false,\r\n               \"policyVersion\": \"1.0.0\",\r\n               \"deviceConfigVersion\": \"1.0.0\",\r\n               \"customerPatchUpdate\": \"test\",\r\n    \"idmAccessToken\": null,\r\n               \"primaryContact\": {\r\n                              \"firstName\": \"sreeram\",\r\n                              \"lastName\": \"m\",\r\n                              \"country\": \"US\",\r\n                              \"timeZone\": \"GMT\",\r\n                              \"phoneNumber\": \"8080808081\",\r\n                              \"alternatePhoneNumber\": \"9090909091\",\r\n                              \"faxNumber\": \"123456789\",\r\n                              \"emailAddress\": \"abc@dell.com\",\r\n                              \"alternateEmailAddress\": \"abc1@dell.com\",\r\n                              \"preferredContactMethod\": \"Phone\",\r\n                              \"preferredContactTimeframe\": \"\",\r\n                              \"preferredLanguage\": \"EN\"\r\n               },\r\n               \r\n               \"shipping\": {\r\n                              \"primaryContact\": {\r\n                                             \"firstName\": \"sreeram\",\r\n                                             \"lastName\": \"m\",\r\n                                             \"phoneNumber\": \"9898989898\",\r\n                                             \"alternatePhoneNumber\": \"8989898989\",\r\n                                             \"emailAddress\": \"abc@dell.com\",\r\n                                             \"preferredContactHours\": \"Evening\",\r\n                                             \"timeZone\": \"EST\",\r\n                                             \"address\": {\r\n                                                            \"addressLine1\": \"Bagmane Tech Park\",\r\n                                                            \"addressLine 2\": \"CV Raman Naga\",\r\n                                                            \"addressLine3\": \"Bangalore\",\r\n                                                            \"city\": \"Bangalore\",\r\n                                                            \"state\": \"KHA\",\r\n                                                            \"zip\": \"5600093\",\r\n                                                            \"country\": \"IN\"\r\n                                             }\r\n                              },\r\n                              \"secondaryContact\": {\r\n                                             \"firstName\": \"sreeram\",\r\n                                             \"lastName\": \"m\",\r\n                                             \"phoneNumber\": \"9898989898\",\r\n                                             \"alternatePhoneNumber\": \"8989898989\",\r\n                                             \"emailAddress\": \"abc@dell.com\",\r\n                                             \"preferredContactHours\": \"Evening\",\r\n                                             \"timeZone\": \"EST\"\r\n\r\n\r\n                              }\r\n\r\n               },\r\n               \"saSRSGateway\": {\r\n                              \"srsGatewayModel\": \"ESRS-VE\",\r\n                              \"srsGatewaySerialNumber\": \"ELMESR15FM181x34\",\r\n                              \"srsGatewayVersion\": \"3.32.00.02\",\r\n                              \"saeModel\": \"SAE\",\r\n                              \"saeSerialNumber\": \"SAE123456\",\r\n                              \"saeVersion\": \"1.0.0\",\r\n                              \"site\": {\r\n                                             \"id\": 11145367,\r\n                                             \"name\": \" SERVICE updatedPlanning - SVT \",\r\n                                              \"address\": \"171 SOUTH ST\",\r\n                                             \"city\": \"HOPKINTON\",\r\n                                                                                          \"state\": \"MA\",\r\n                                             \"country\": \"United States\",\r\n                                                                                          \"countryName\": \"United States\",\r\n                                              \"description\": \"SERVICE PLANNING - SVT\",\r\n                                             \"partyId\": \"11145367\"\r\n                              },\r\n                              \"cluster\": {\r\n                                             \"name\": \"Dell_SA_HAGateways\"\r\n                              }\r\n               }\r\n\r\n}\r\n",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "https://mbapi.us.dell.com/clientServices/api/v2/clients",
+					"protocol": "https",
+					"host": [
+						"mbapi",
+						"us",
+						"dell",
+						"com"
+					],
+					"path": [
+						"clientServices",
+						"api",
+						"v2",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SupportAssist Server Microservices - Dispatch Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5c8822d6-6e3f-446a-8810-d98425bdebd9",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"if(environment.FusFRS == \"Fail\" ||environment.FRSExternalFileStatus == \"Fail\" ||environment.WebCase == \"Fail\" ||environment.CaseQuery == \"Fail\" ||environment.Warranty == \"Fail\" ||environment.SAEClients == \"Fail\" ){\r",
+							"    postman.setNextRequest(\"Email\");\r",
+							"}\r",
+							"else{\r",
+							"    postman.setNextRequest(null);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "SupportAssist-API-Key",
+						"value": "69C61EF9E6604E09AEC89F3976782264"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://mbapi.us.dell.com/serviceManagementServices/api/v1/dispatchRequests?dispatchRequestId=XN9GQcoK8KqEQ+S6YnITQoGwJnjodlsXiaabG2X5kX4=\n",
+					"protocol": "https",
+					"host": [
+						"mbapi",
+						"us",
+						"dell",
+						"com"
+					],
+					"path": [
+						"serviceManagementServices",
+						"api",
+						"v1",
+						"dispatchRequests"
+					],
+					"query": [
+						{
+							"key": "dispatchRequestId",
+							"value": "XN9GQcoK8KqEQ+S6YnITQoGwJnjodlsXiaabG2X5kX4=\n"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Email",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"recipients\": \"Ramakanth.Kommu@Dell.com,Vishnu.Perabathini@dell.com,Rajasekhar.Yalla@Dell.com,prince.joy@dell.com, winston.g.jacob@dell.com, Sampath.Kumar1@Dell.com, Priyanka_Meshram@dellteam.com\",\n    \"emailSubject\": \"SAE Backend Health Check - STAGE\",\n    \"emailBody\": \"SAE Backend Health Check Results:\\n\\n 1) FUS-FRS: {{FusFRS}} \\n URL: https://mbapi.us.dell.com/FRS/api/v1/File/7585B17C395439C5E0534ACAA00AF8EF \\n\\n 2) FRS-ExternalFileStatus: {{FRSExternalFileStatus}} \\n URL: https://mbapi.us.dell.com/FRS/api/v1/File/7774dd16-21/fileStatus \\n\\n 3) WebCase: {{WebCase}} \\n URL: https://mbapi.us.dell.com/webcase/WebCase/1_0\\n\\n 4) CaseQuery: {{CaseQuery}} \\n URL: https://mbapi.us.dell.com/serviceManagementServices/api/v1/cases?clientId=47trs5zysa25ahfslp3c0s5ld7dbqlzn \\n\\n 5) Warranty Service: {{Warranty}} \\n URL: https://mbapi.us.dell.com/warrantyServices/api/v2/warranties?serviceTag=56NDF22\\n\\n  6) SAE Registration: {{SAEClients}} \\n URL: https://mbapi.us.dell.com/clientServices/api/v2/clients\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://email-sender-tst.cft.isus.emc.com/sendEmail",
+					"protocol": "https",
+					"host": [
+						"email-sender-tst",
+						"cft",
+						"isus",
+						"emc",
+						"com"
+					],
+					"path": [
+						"sendEmail"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
